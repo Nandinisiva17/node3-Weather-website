@@ -7,14 +7,14 @@ const forecast = (latitude, longitude, callback) => {
         json: true},
         (error, { body })=>{
             if (error){
-                callback('unable to connect to the website',undefined);
+                callback('Unable to connect to the weather service!',undefined);
             }
             else if(body.success === false){
-                callback('please specify a valid location',undefined);
+                callback('Unable to find location',undefined);
             } 
             else {
                 const data = body.current;
-                callback(undefined, `The current temperature is ${data.temperature}. It feels like ${data.feelslike}. ${data.weather_descriptions[0]}`)
+                callback(undefined, `The current temperature is ${data.temperature}. It feels like ${data.feelslike}. ${data.weather_descriptions[0]}. The humidity is ${data.humidity}%`)
                 }
         }
     )
